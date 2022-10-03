@@ -7,8 +7,4 @@ NOTE: Only potrait mode.
 1-math_expressions v2.3.1
 
 # Videos
-https://user-images.githubusercontent.com/98664397/184368330-56efde7d-0ffa-4dc4-a3f5-17ce91468764.mp4
-
-
-
-
+https://user-images.githubusercontent.com/98664397/193563208-78748c8d-9427-45b5-b1d3-e6646d50fd31.mp4
