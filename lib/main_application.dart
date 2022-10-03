@@ -26,7 +26,7 @@ class _MainApplicationState extends State<MainApplication> {
       child: Column(
         children: [
           Expanded(
-            flex: 30,
+            flex: 35,
             child: Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -37,7 +37,7 @@ class _MainApplicationState extends State<MainApplication> {
             ),
           ),
           Expanded(
-            flex: 70,
+            flex: 65,
             child: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -65,18 +65,19 @@ class _MainApplicationState extends State<MainApplication> {
   Widget _getTexts() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(
           exp,
-          style: TextStyle(color: white, fontSize: 24),
+          style: TextStyle(color: white, fontSize: 26),
         ),
         SizedBox(height: 10),
         Text(
           result,
           style: TextStyle(
-              color: white, fontSize: 30, fontWeight: FontWeight.bold),
+              color: white, fontSize: 36, fontWeight: FontWeight.bold),
         ),
+        SizedBox(height: 20),
       ],
     );
   }
@@ -94,7 +95,7 @@ class _MainApplicationState extends State<MainApplication> {
                 child: Text(t1),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
-                  primary: getTextColor(t1),
+                  foregroundColor: getTextColor(t1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(26),
                   ),
@@ -114,7 +115,7 @@ class _MainApplicationState extends State<MainApplication> {
                 child: Text(t2),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
-                  primary: getTextColor(t2),
+                  foregroundColor: getTextColor(t2),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(26),
                   ),
@@ -134,7 +135,7 @@ class _MainApplicationState extends State<MainApplication> {
                 child: Text(t3),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
-                  primary: getTextColor(t3),
+                  foregroundColor: getTextColor(t3),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(26),
                   ),
@@ -154,7 +155,7 @@ class _MainApplicationState extends State<MainApplication> {
                 child: Text(t4),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
-                  primary: getTextColor(t4),
+                  foregroundColor: getTextColor(t4),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(26),
                   ),

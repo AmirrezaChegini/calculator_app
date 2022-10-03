@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 //colors
-
 Color white = Colors.white;
 Color black = Colors.black;
 Color blueGrey700 = Color(0xff455A64);
