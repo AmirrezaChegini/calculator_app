@@ -1,17 +1,10 @@
+import 'package:calculator_app/controller/cal_ctrl.dart';
 import 'package:calculator_app/data/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
+import 'package:get/get.dart';
 
-class MainApplication extends StatefulWidget {
-  const MainApplication({Key? key}) : super(key: key);
-
-  @override
-  State<MainApplication> createState() => _MainApplicationState();
-}
-
-class _MainApplicationState extends State<MainApplication> {
-  String exp = '';
-  String result = '';
+class MainApplication extends StatelessWidget {
+  final calCtrl = Get.put(CalCtrl());
 
   @override
   Widget build(BuildContext context) {
@@ -67,15 +60,19 @@ class _MainApplicationState extends State<MainApplication> {
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(
-          exp,
-          style: TextStyle(color: white, fontSize: 26),
+        Obx(
+          () => Text(
+            calCtrl.exp.value,
+            style: TextStyle(color: white, fontSize: 26),
+          ),
         ),
         SizedBox(height: 10),
-        Text(
-          result,
-          style: TextStyle(
-              color: white, fontSize: 36, fontWeight: FontWeight.bold),
+        Obx(
+          () => Text(
+            calCtrl.result.value,
+            style: TextStyle(
+                color: white, fontSize: 36, fontWeight: FontWeight.bold),
+          ),
         ),
         SizedBox(height: 20),
       ],
@@ -91,7 +88,7 @@ class _MainApplicationState extends State<MainApplication> {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: TextButton(
-                onPressed: () => Calculate(t1),
+                onPressed: () => calCtrl.calculate(t1),
                 child: Text(t1),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
@@ -111,7 +108,7 @@ class _MainApplicationState extends State<MainApplication> {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: TextButton(
-                onPressed: () => Calculate(t2),
+                onPressed: () => calCtrl.calculate(t2),
                 child: Text(t2),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
@@ -131,7 +128,7 @@ class _MainApplicationState extends State<MainApplication> {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: TextButton(
-                onPressed: () => Calculate(t3),
+                onPressed: () => calCtrl.calculate(t3),
                 child: Text(t3),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
@@ -151,7 +148,7 @@ class _MainApplicationState extends State<MainApplication> {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: TextButton(
-                onPressed: () => Calculate(t4),
+                onPressed: () => calCtrl.calculate(t4),
                 child: Text(t4),
                 style: TextButton.styleFrom(
                   backgroundColor: blueGrey900,
@@ -198,29 +195,5 @@ class _MainApplicationState extends State<MainApplication> {
     }
 
     return white;
-  }
-
-  void Calculate(String x) {
-    setState(() {
-      List<String> clearsResult = ['C', 'DE', '='];
-
-      if (!clearsResult.contains(x) && result != '') {
-        exp = result;
-        result = '';
-        exp += x;
-      } else if (!clearsResult.contains(x)) {
-        exp += x;
-      } else if (x == 'DE') {
-        exp = exp.substring(0, exp.length - 1);
-      } else if (x == 'C') {
-        exp = '';
-        result = '';
-      } else {
-        Parser parser = Parser();
-        Expression e = parser.parse(exp.replaceAll('x', '*'));
-        ContextModel cm = ContextModel();
-        result = e.evaluate(EvaluationType.REAL, cm).toString();
-      }
-    });
   }
 }
